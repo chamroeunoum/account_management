@@ -1,0 +1,102 @@
+/**
+ * Define fonts
+ */
+ @font-face {
+  font-family: "btb-black";
+  src: url(/fonts/Battambang-Black.ttf?1665475ecea5541b59c7013602243262);
+}
+.font-btb-black {
+font-family: "btb-black";
+}
+@font-face {
+font-family: "btb-bold";
+src: url(/fonts/Battambang-Bold.ttf?e15e3f892e659f65dc07b248ec1e85c4);
+}
+.font-btb-bold {
+font-family: "btb-bold";
+}
+@font-face {
+font-family: "btb-light";
+src: url(/fonts/Battambang-Light.ttf?b0ceba93eccc597f12c17cbd975aa554);
+}
+.font-btb-light {
+font-family: "btb-light";
+}
+@font-face {
+font-family: "btb-regular";
+src: url(/fonts/Battambang-Regular.ttf?913c76816e558857c19c988db7bfc8d9);
+}
+.font-btb {
+font-family: "btb-regular";
+}
+@font-face {
+font-family: "btb-thin";
+src: url(/fonts/Battambang-Thin.ttf?9d14286d7fefcae3f3a94b437ebaa2c1);
+}
+.font-btb-thin {
+font-family: "btb-thin";
+}
+
+@font-face {
+font-family: "dangrek";
+src: url(/fonts/Dangrek-Regular.ttf?429aa5b4148ea4df0f44bcc564e3ce20);
+}
+.font-dangrek {
+font-family: "dangrek";
+}
+
+@font-face {
+font-family: "kantumruy";
+src: url(/fonts/Kantumruy-Regular.ttf?0c8cb1d1d97fe8260e113598f15d4b3a);
+}
+.font-ktr {
+font-family: "kantumruy";
+}
+@font-face {
+font-family: "kantumruy-light";
+src: url(/fonts/Kantumruy-Light.ttf?59ff3fc1c2db87f25bd13a37ea78158b);
+}
+.font-ktr-light {
+font-family: "kantumruy-light";
+}
+@font-face {
+font-family: "kantumruy-bold";
+src: url(/fonts/Kantumruy-Bold.ttf?63a6cc609e78dde0e5b95e156895e7c5);
+}
+.font-ktr-bold {
+font-family: "kantumruy-bold";
+}
+@font-face {
+font-family: moul;
+src: url(/fonts/Moul-Regular.ttf?2fc7a1bf5fea84d4c5cf4bfc8aa10a79);
+}
+.font-muol {
+font-family: moul;
+}
+@font-face {
+font-family: moulpali;
+src: url(/fonts/Moulpali-Regular.ttf?24e0cc48428d1c6d8f9c399a7ce6275c);
+}
+.font-moulpali {
+font-family: moulpali;
+}
+@font-face {
+font-family: preahvihear;
+src: url(/fonts/Preahvihear-Regular.ttf?d447ef144db0b6aaa74403150832c1c0);
+}
+.font-pvh {
+font-family: preahvihear;
+}
+@font-face {
+font-family: siemreap;
+src: url(/fonts/Siemreap-Regular.ttf?eaf1225fe63c83a5e729f98481ddc10d);
+}
+.font-sr {
+font-family: siemreap;
+}
+body * {
+font-family: Arial, Helvetica, sans-serif, kantumruy;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

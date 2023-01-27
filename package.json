@@ -10,9 +10,43 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@vicons/antd": "^0.12.0",
+        "@vicons/carbon": "^0.12.0",
+        "@vicons/fa": "^0.12.0",
+        "@vicons/fluent": "^0.12.0",
+        "@vicons/ionicons4": "^0.12.0",
+        "@vicons/ionicons5": "^0.12.0",
+        "@vicons/material": "^0.12.0",
+        "@vicons/tabler": "^0.12.0",
+        "@vicons/utils": "^0.1.4",
+        "autoprefixer": "^10.4.2",
         "axios": "^0.21",
+        "browser-sync": "^2.27.7",
+        "browser-sync-webpack-plugin": "^2.3.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.4.7",
+        "tailwindcss": "^3.0.23",
+        "vue-loader": "^16.8.3"
+    },
+    "dependencies": {
+        "fs": "0.0.1-security",
+        "naive-ui": "^2.26.0",
+        "os": "^0.1.2",
+        "path": "^0.12.7",
+        "path-browserify": "^1.0.1",
+        "promise": "^8.1.0",
+        "qrcode": "^1.5.0",
+        "qrcode.vue": "^3.3.3",
+        "vant": "^3.4.5",
+        "vite": "^2.8.6",
+        "vue": "^3.2.31",
+        "vue-axios": "^3.4.1",
+        "vue-cli": "^2.9.6",
+        "vue-router": "^4.0.13",
+        "vue3-barcode": "^1.0.1",
+        "vue3-charts": "^1.1.28",
+        "vue3-qrcode-reader": "0.0.1",
+        "vuex": "^4.0.2"
     }
 }

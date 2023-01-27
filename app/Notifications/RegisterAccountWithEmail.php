@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class RegisterAccount extends Notification
+class RegisterAccountWithEmail extends Notification
 {
     use Queueable;
 
@@ -41,9 +41,9 @@ class RegisterAccount extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->line('Verification Code : ' . $notifiable->varification_codes )
-                    ->line('Thank you for using our application!');
+                    ->greeting($notifiable->name != "" ? 'Hi, ' . $notifiable->name : "Hello")
+                    ->line('The following code is the confirmation code to confirm your registration:')
+                    ->line($notifiable->varification_codes );
     }
 
     /**

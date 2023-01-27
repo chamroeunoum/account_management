@@ -6,15 +6,23 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "doctrine/dbal": "^3.3",
+        "facebook/graph-sdk": "^5.1",
+        "fruitcake/laravel-cors": "^3.0",
+        "genealabs/laravel-sign-in-with-apple": "^0.5.0",
+        "guzzlehttp/guzzle": "^7.4",
         "intervention/image": "^2.7",
+        "laravel-notification-channels/authy": "^9.0",
         "laravel-notification-channels/telegram": "^1.0",
         "laravel/framework": "^8.75",
         "laravel/passport": "^10.3",
         "laravel/sanctum": "^2.11",
+        "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.5",
-        "lasserafn/php-initial-avatar-generator": "^4.2"
+        "lasserafn/php-initial-avatar-generator": "^4.2",
+        "lcobucci/jwt": "^4.1",
+        "spomky-labs/otphp": "^10.0",
+        "twilio/sdk": "^6.34"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

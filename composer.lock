@@ -4,63 +4,74 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "61453e3839faf7dc9a3c0de211c00178",
+    "content-hash": "a08fb5d7a6241373d862e3a779899077",
     "packages": [
         {
-            "name": "asm89/stack-cors",
-            "version": "v2.1.1",
+            "name": "beberlei/assert",
+            "version": "v3.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/asm89/stack-cors.git",
-                "reference": "73e5b88775c64ccc0b84fb60836b30dc9d92ac4a"
+                "url": "https://github.com/beberlei/assert.git",
+                "reference": "cb70015c04be1baee6f5f5c953703347c0ac1655"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/asm89/stack-cors/zipball/73e5b88775c64ccc0b84fb60836b30dc9d92ac4a",
-                "reference": "73e5b88775c64ccc0b84fb60836b30dc9d92ac4a",
+                "url": "https://api.github.com/repos/beberlei/assert/zipball/cb70015c04be1baee6f5f5c953703347c0ac1655",
+                "reference": "cb70015c04be1baee6f5f5c953703347c0ac1655",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2|^8.0",
-                "symfony/http-foundation": "^4|^5|^6",
-                "symfony/http-kernel": "^4|^5|^6"
+                "ext-ctype": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-simplexml": "*",
+                "php": "^7.0 || ^8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7|^9",
-                "squizlabs/php_codesniffer": "^3.5"
+                "friendsofphp/php-cs-fixer": "*",
+                "phpstan/phpstan": "*",
+                "phpunit/phpunit": ">=6.0.0",
+                "yoast/phpunit-polyfills": "^0.1.0"
+            },
+            "suggest": {
+                "ext-intl": "Needed to allow Assertion::count(), Assertion::isCountable(), Assertion::minCount(), and Assertion::maxCount() to operate on ResourceBundles"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.1-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "Asm89\\Stack\\": "src/"
-                }
+                    "Assert\\": "lib/Assert"
+                },
+                "files": [
+                    "lib/Assert/functions.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "BSD-2-Clause"
             ],
             "authors": [
                 {
-                    "name": "Alexander",
-                    "email": "iam.asm89@gmail.com"
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Richard Quadling",
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
                 }
             ],
-            "description": "Cross-origin resource sharing library and stack middleware",
-            "homepage": "https://github.com/asm89/stack-cors",
+            "description": "Thin assertion library for input validation in business models.",
             "keywords": [
-                "cors",
-                "stack"
+                "assert",
+                "assertion",
+                "validation"
             ],
             "support": {
-                "issues": "https://github.com/asm89/stack-cors/issues",
-                "source": "https://github.com/asm89/stack-cors/tree/v2.1.1"
+                "issues": "https://github.com/beberlei/assert/issues",
+                "source": "https://github.com/beberlei/assert/tree/v3.3.2"
             },
-            "time": "2022-01-18T09:12:03+00:00"
+            "time": "2021-12-16T21:41:27+00:00"
         },
         {
             "name": "brick/math",
@@ -262,6 +273,353 @@
                 "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.1"
             },
             "time": "2021-08-13T13:06:58+00:00"
+        },
+        {
+            "name": "doctrine/cache",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/cache.git",
+                "reference": "331b4d5dbaeab3827976273e9356b3b453c300ce"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/331b4d5dbaeab3827976273e9356b3b453c300ce",
+                "reference": "331b4d5dbaeab3827976273e9356b3b453c300ce",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1 || ^8.0"
+            },
+            "conflict": {
+                "doctrine/common": ">2.2,<2.4"
+            },
+            "require-dev": {
+                "alcaeus/mongo-php-adapter": "^1.1",
+                "cache/integration-tests": "dev-master",
+                "doctrine/coding-standard": "^8.0",
+                "mongodb/mongodb": "^1.1",
+                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
+                "predis/predis": "~1.0",
+                "psr/cache": "^1.0 || ^2.0 || ^3.0",
+                "symfony/cache": "^4.4 || ^5.2 || ^6.0@dev",
+                "symfony/var-exporter": "^4.4 || ^5.2 || ^6.0@dev"
+            },
+            "suggest": {
+                "alcaeus/mongo-php-adapter": "Required to use legacy MongoDB driver"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                }
+            ],
+            "description": "PHP Doctrine Cache library is a popular cache implementation that supports many different drivers such as redis, memcache, apc, mongodb and others.",
+            "homepage": "https://www.doctrine-project.org/projects/cache.html",
+            "keywords": [
+                "abstraction",
+                "apcu",
+                "cache",
+                "caching",
+                "couchdb",
+                "memcached",
+                "php",
+                "redis",
+                "xcache"
+            ],
+            "support": {
+                "issues": "https://github.com/doctrine/cache/issues",
+                "source": "https://github.com/doctrine/cache/tree/2.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fcache",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-07-17T14:49:29+00:00"
+        },
+        {
+            "name": "doctrine/dbal",
+            "version": "3.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/dbal.git",
+                "reference": "35eae239ef515d55ebb24e9d4715cad09a4f58ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/35eae239ef515d55ebb24e9d4715cad09a4f58ed",
+                "reference": "35eae239ef515d55ebb24e9d4715cad09a4f58ed",
+                "shasum": ""
+            },
+            "require": {
+                "composer-runtime-api": "^2",
+                "doctrine/cache": "^1.11|^2.0",
+                "doctrine/deprecations": "^0.5.3",
+                "doctrine/event-manager": "^1.0",
+                "php": "^7.3 || ^8.0",
+                "psr/cache": "^1|^2|^3",
+                "psr/log": "^1|^2|^3"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "9.0.0",
+                "jetbrains/phpstorm-stubs": "2021.1",
+                "phpstan/phpstan": "1.4.0",
+                "phpstan/phpstan-strict-rules": "^1.1",
+                "phpunit/phpunit": "9.5.11",
+                "psalm/plugin-phpunit": "0.16.1",
+                "squizlabs/php_codesniffer": "3.6.2",
+                "symfony/cache": "^5.2|^6.0",
+                "symfony/console": "^2.7|^3.0|^4.0|^5.0|^6.0",
+                "vimeo/psalm": "4.16.1"
+            },
+            "suggest": {
+                "symfony/console": "For helpful console commands such as SQL execution and import of files."
+            },
+            "bin": [
+                "bin/doctrine-dbal"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\DBAL\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                }
+            ],
+            "description": "Powerful PHP database abstraction layer (DBAL) with many features for database schema introspection and management.",
+            "homepage": "https://www.doctrine-project.org/projects/dbal.html",
+            "keywords": [
+                "abstraction",
+                "database",
+                "db2",
+                "dbal",
+                "mariadb",
+                "mssql",
+                "mysql",
+                "oci8",
+                "oracle",
+                "pdo",
+                "pgsql",
+                "postgresql",
+                "queryobject",
+                "sasql",
+                "sql",
+                "sqlite",
+                "sqlserver",
+                "sqlsrv"
+            ],
+            "support": {
+                "issues": "https://github.com/doctrine/dbal/issues",
+                "source": "https://github.com/doctrine/dbal/tree/3.3.2"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fdbal",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-02-05T16:33:45+00:00"
+        },
+        {
+            "name": "doctrine/deprecations",
+            "version": "v0.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/deprecations.git",
+                "reference": "9504165960a1f83cc1480e2be1dd0a0478561314"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/deprecations/zipball/9504165960a1f83cc1480e2be1dd0a0478561314",
+                "reference": "9504165960a1f83cc1480e2be1dd0a0478561314",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8.0"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^6.0|^7.0|^8.0",
+                "phpunit/phpunit": "^7.0|^8.0|^9.0",
+                "psr/log": "^1.0"
+            },
+            "suggest": {
+                "psr/log": "Allows logging deprecations via PSR-3 logger implementation"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Deprecations\\": "lib/Doctrine/Deprecations"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A small layer on top of trigger_error(E_USER_DEPRECATED) or PSR-3 logging with options to disable all deprecations or selectively for packages.",
+            "homepage": "https://www.doctrine-project.org/",
+            "support": {
+                "issues": "https://github.com/doctrine/deprecations/issues",
+                "source": "https://github.com/doctrine/deprecations/tree/v0.5.3"
+            },
+            "time": "2021-03-21T12:59:47+00:00"
+        },
+        {
+            "name": "doctrine/event-manager",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/event-manager.git",
+                "reference": "41370af6a30faa9dc0368c4a6814d596e81aba7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/41370af6a30faa9dc0368c4a6814d596e81aba7f",
+                "reference": "41370af6a30faa9dc0368c4a6814d596e81aba7f",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1 || ^8.0"
+            },
+            "conflict": {
+                "doctrine/common": "<2.9@dev"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^6.0",
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Common\\": "lib/Doctrine/Common"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
+                    "name": "Roman Borschel",
+                    "email": "roman@code-factory.org"
+                },
+                {
+                    "name": "Benjamin Eberlei",
+                    "email": "kontakt@beberlei.de"
+                },
+                {
+                    "name": "Jonathan Wage",
+                    "email": "jonwage@gmail.com"
+                },
+                {
+                    "name": "Johannes Schmitt",
+                    "email": "schmittjoh@gmail.com"
+                },
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com"
+                }
+            ],
+            "description": "The Doctrine Event Manager is a simple PHP event system that was built to be used with the various Doctrine projects.",
+            "homepage": "https://www.doctrine-project.org/projects/event-manager.html",
+            "keywords": [
+                "event",
+                "event dispatcher",
+                "event manager",
+                "event system",
+                "events"
+            ],
+            "support": {
+                "issues": "https://github.com/doctrine/event-manager/issues",
+                "source": "https://github.com/doctrine/event-manager/tree/1.1.x"
+            },
+            "funding": [
+                {
+                    "url": "https://www.doctrine-project.org/sponsorship.html",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.patreon.com/phpdoctrine",
+                    "type": "patreon"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fevent-manager",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-29T18:28:51+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -560,6 +918,66 @@
             "time": "2020-12-29T14:50:06+00:00"
         },
         {
+            "name": "facebook/graph-sdk",
+            "version": "5.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facebook/php-graph-sdk.git",
+                "reference": "38fd7187a6704d3ab14ded2f3a534ac4ee6f3481"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/38fd7187a6704d3ab14ded2f3a534ac4ee6f3481",
+                "reference": "38fd7187a6704d3ab14ded2f3a534ac4ee6f3481",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "~5.0",
+                "mockery/mockery": "~0.8",
+                "phpunit/phpunit": "~4.0"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "Allows for implementation of the Guzzle HTTP client"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Facebook\\": "src/Facebook/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Facebook Platform"
+            ],
+            "authors": [
+                {
+                    "name": "Facebook",
+                    "homepage": "https://github.com/facebook/facebook-php-sdk-v4/contributors"
+                }
+            ],
+            "description": "Facebook SDK for PHP",
+            "homepage": "https://github.com/facebook/facebook-php-sdk-v4",
+            "keywords": [
+                "facebook",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/facebook/php-graph-sdk/issues",
+                "source": "https://github.com/facebook/php-graph-sdk/tree/5.1.4"
+            },
+            "abandoned": true,
+            "time": "2016-05-13T17:28:30+00:00"
+        },
+        {
             "name": "firebase/php-jwt",
             "version": "v5.5.1",
             "source": {
@@ -618,36 +1036,34 @@
         },
         {
             "name": "fruitcake/laravel-cors",
-            "version": "v2.0.5",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fruitcake/laravel-cors.git",
-                "reference": "3a066e5cac32e2d1cdaacd6b961692778f37b5fc"
+                "reference": "7c036ec08972d8d5d9db637e772af6887828faf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fruitcake/laravel-cors/zipball/3a066e5cac32e2d1cdaacd6b961692778f37b5fc",
-                "reference": "3a066e5cac32e2d1cdaacd6b961692778f37b5fc",
+                "url": "https://api.github.com/repos/fruitcake/laravel-cors/zipball/7c036ec08972d8d5d9db637e772af6887828faf5",
+                "reference": "7c036ec08972d8d5d9db637e772af6887828faf5",
                 "shasum": ""
             },
             "require": {
-                "asm89/stack-cors": "^2.0.1",
+                "fruitcake/php-cors": "^1.2",
                 "illuminate/contracts": "^6|^7|^8|^9",
                 "illuminate/support": "^6|^7|^8|^9",
-                "php": ">=7.2",
-                "symfony/http-foundation": "^4|^5|^6",
-                "symfony/http-kernel": "^4.3.4|^5|^6"
+                "php": "^7.4|^8.0"
             },
             "require-dev": {
                 "laravel/framework": "^6|^7.24|^8",
                 "orchestra/testbench-dusk": "^4|^5|^6|^7",
-                "phpunit/phpunit": "^6|^7|^8|^9",
+                "phpunit/phpunit": "^9",
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "3.0-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -683,7 +1099,7 @@
             ],
             "support": {
                 "issues": "https://github.com/fruitcake/laravel-cors/issues",
-                "source": "https://github.com/fruitcake/laravel-cors/tree/v2.0.5"
+                "source": "https://github.com/fruitcake/laravel-cors/tree/v3.0.0"
             },
             "funding": [
                 {
@@ -695,7 +1111,145 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-03T14:53:04+00:00"
+            "time": "2022-02-23T14:53:22+00:00"
+        },
+        {
+            "name": "fruitcake/php-cors",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fruitcake/php-cors.git",
+                "reference": "58571acbaa5f9f462c9c77e911700ac66f446d4e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fruitcake/php-cors/zipball/58571acbaa5f9f462c9c77e911700ac66f446d4e",
+                "reference": "58571acbaa5f9f462c9c77e911700ac66f446d4e",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0",
+                "symfony/http-foundation": "^4.4|^5.4|^6"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.4",
+                "phpunit/phpunit": "^9",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fruitcake\\Cors\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fruitcake",
+                    "homepage": "https://fruitcake.nl"
+                },
+                {
+                    "name": "Barryvdh",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "Cross-origin resource sharing library for the Symfony HttpFoundation",
+            "homepage": "https://github.com/fruitcake/php-cors",
+            "keywords": [
+                "cors",
+                "laravel",
+                "symfony"
+            ],
+            "support": {
+                "issues": "https://github.com/fruitcake/php-cors/issues",
+                "source": "https://github.com/fruitcake/php-cors/tree/v1.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://fruitcake.nl",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/barryvdh",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-02-20T15:07:15+00:00"
+        },
+        {
+            "name": "genealabs/laravel-sign-in-with-apple",
+            "version": "0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeneaLabs/laravel-sign-in-with-apple.git",
+                "reference": "839ba3fce6b10a1b80dc4e019e9fff59a60e545e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeneaLabs/laravel-sign-in-with-apple/zipball/839ba3fce6b10a1b80dc4e019e9fff59a60e545e",
+                "reference": "839ba3fce6b10a1b80dc4e019e9fff59a60e545e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0",
+                "laravel/socialite": "^5.0",
+                "php": ">=7.3"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0",
+                "orchestra/testbench-browser-kit": "^6.0",
+                "orchestra/testbench-dusk": "^6.0",
+                "phpunit/phpunit": "^9.3",
+                "predis/predis": "^1.1"
+            },
+            "suggest": {
+                "genealabs/laravel-socialiter": "Automatic user resolution and persistence for any Laravel Socialite driver."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "\\GeneaLabs\\LaravelSignInWithApple\\Providers\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeneaLabs\\LaravelSignInWithApple\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike Bronner",
+                    "email": "hello@genealabs.com",
+                    "homepage": "https://genealabs.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Add Apple's new single-signon feature to your site with ease.",
+            "support": {
+                "issues": "https://github.com/GeneaLabs/laravel-sign-in-with-apple/issues",
+                "source": "https://github.com/GeneaLabs/laravel-sign-in-with-apple/tree/0.5.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mikebronner",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-09-13T23:29:18+00:00"
         },
         {
             "name": "graham-campbell/result-type",
@@ -1167,6 +1721,78 @@
             "time": "2021-12-16T16:49:26+00:00"
         },
         {
+            "name": "laravel-notification-channels/authy",
+            "version": "v9.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-notification-channels/authy.git",
+                "reference": "d6bca666b690780efb08b9fdda9685381c14ce4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-notification-channels/authy/zipball/d6bca666b690780efb08b9fdda9685381c14ce4f",
+                "reference": "d6bca666b690780efb08b9fdda9685381c14ce4f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/notifications": "^8.0.0 || ^9.0.0",
+                "illuminate/queue": "^8.0.0 || ^9.0.0",
+                "php": "^8.0.0",
+                "rinvex/laravel-authy": "^9.0.0"
+            },
+            "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.30.0",
+                "mockery/mockery": "^1.4.0",
+                "phpunit/phpunit": "^9.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NotificationChannels\\Authy\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rinvex LLC",
+                    "email": "help@rinvex.com",
+                    "homepage": "https://rinvex.com"
+                },
+                {
+                    "name": "Abdelrahman Omran",
+                    "email": "me@omranic.com",
+                    "homepage": "https://omranic.com",
+                    "role": "Project Lead"
+                },
+                {
+                    "name": "The Generous Laravel Community",
+                    "homepage": "https://github.com/laravel-notification-channels/authy/contributors"
+                }
+            ],
+            "description": "Authy notification channel for Laravel, with the ability to send in-app, sms, and call verification tokens.",
+            "homepage": "https://rinvex.com",
+            "keywords": [
+                "authy",
+                "call",
+                "laravel",
+                "phone",
+                "rinvex",
+                "sms",
+                "token",
+                "verification"
+            ],
+            "support": {
+                "docs": "https://github.com/laravel-notification-channels/authy/blob/master/README.md",
+                "email": "help@rinvex.com",
+                "issues": "https://github.com/laravel-notification-channels/authy/issues",
+                "source": "https://github.com/laravel-notification-channels/authy"
+            },
+            "time": "2021-08-22T00:39:59+00:00"
+        },
+        {
             "name": "laravel-notification-channels/telegram",
             "version": "1.0.0",
             "source": {
@@ -1604,6 +2230,75 @@
                 "source": "https://github.com/laravel/serializable-closure"
             },
             "time": "2021-11-30T15:53:04+00:00"
+        },
+        {
+            "name": "laravel/socialite",
+            "version": "v5.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/socialite.git",
+                "reference": "9b96dfd69e9c1de69c23205cb390550bc71c357e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/9b96dfd69e9c1de69c23205cb390550bc71c357e",
+                "reference": "9b96dfd69e9c1de69c23205cb390550bc71c357e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "illuminate/http": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+                "league/oauth1-client": "^1.0",
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "illuminate/contracts": "^6.0|^7.0|^8.0|^9.0",
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^4.0|^5.0|^6.0|^7.0",
+                "phpunit/phpunit": "^8.0|^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Socialite\\SocialiteServiceProvider"
+                    ],
+                    "aliases": {
+                        "Socialite": "Laravel\\Socialite\\Facades\\Socialite"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Socialite\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel wrapper around OAuth 1 & OAuth 2 libraries.",
+            "homepage": "https://laravel.com",
+            "keywords": [
+                "laravel",
+                "oauth"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/socialite/issues",
+                "source": "https://github.com/laravel/socialite"
+            },
+            "time": "2022-02-07T16:08:19+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -2359,6 +3054,82 @@
                 }
             ],
             "time": "2021-11-21T11:48:40+00:00"
+        },
+        {
+            "name": "league/oauth1-client",
+            "version": "v1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/oauth1-client.git",
+                "reference": "88dd16b0cff68eb9167bfc849707d2c40ad91ddc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/oauth1-client/zipball/88dd16b0cff68eb9167bfc849707d2c40ad91ddc",
+                "reference": "88dd16b0cff68eb9167bfc849707d2c40ad91ddc",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-openssl": "*",
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "guzzlehttp/psr7": "^1.7|^2.0",
+                "php": ">=7.1||>=8.0"
+            },
+            "require-dev": {
+                "ext-simplexml": "*",
+                "friendsofphp/php-cs-fixer": "^2.17",
+                "mockery/mockery": "^1.3.3",
+                "phpstan/phpstan": "^0.12.42",
+                "phpunit/phpunit": "^7.5||9.5"
+            },
+            "suggest": {
+                "ext-simplexml": "For decoding XML-based responses."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev",
+                    "dev-develop": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\OAuth1\\Client\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Corlett",
+                    "email": "bencorlett@me.com",
+                    "homepage": "http://www.webcomm.com.au",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OAuth 1.0 Client Library",
+            "keywords": [
+                "Authentication",
+                "SSO",
+                "authorization",
+                "bitbucket",
+                "identity",
+                "idp",
+                "oauth",
+                "oauth1",
+                "single sign on",
+                "trello",
+                "tumblr",
+                "twitter"
+            ],
+            "support": {
+                "issues": "https://github.com/thephpleague/oauth1-client/issues",
+                "source": "https://github.com/thephpleague/oauth1-client/tree/v1.10.0"
+            },
+            "time": "2021-08-15T23:05:49+00:00"
         },
         {
             "name": "league/oauth2-server",
@@ -3464,6 +4235,55 @@
             "time": "2021-11-28T23:46:03+00:00"
         },
         {
+            "name": "psr/cache",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "reference": "aa5030cfa5405eccfdcb1083ce040c2cb8d253bf",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "https://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for caching libraries",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr-6"
+            ],
+            "support": {
+                "source": "https://github.com/php-fig/cache/tree/3.0.0"
+            },
+            "time": "2021-02-03T23:26:27+00:00"
+        },
+        {
             "name": "psr/container",
             "version": "1.1.2",
             "source": {
@@ -4117,6 +4937,247 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "rinvex/authy",
+            "version": "v6.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rinvex/authy.git",
+                "reference": "9a9f9fa55330e70aa93295cf9cb45a5309a6bde5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rinvex/authy/zipball/9a9f9fa55330e70aa93295cf9cb45a5309a6bde5",
+                "reference": "9a9f9fa55330e70aa93295cf9cb45a5309a6bde5",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.2.0",
+                "php": "^8.0.0",
+                "psr/http-message": "^1.0.0"
+            },
+            "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.31.0",
+                "mockery/mockery": "^1.4.0",
+                "phpunit/phpunit": "^9.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rinvex\\Authy\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rinvex LLC",
+                    "email": "help@rinvex.com",
+                    "homepage": "https://rinvex.com"
+                },
+                {
+                    "name": "Abdelrahman Omran",
+                    "email": "me@omranic.com",
+                    "homepage": "https://omranic.com",
+                    "role": "Project Lead"
+                },
+                {
+                    "name": "The Generous Laravel Community",
+                    "homepage": "https://github.com/rinvex/authy/contributors"
+                }
+            ],
+            "description": "Rinvex Authy is a simple wrapper for Authy TOTP API, the best rated Two-Factor Authentication service for consumers, simplest 2fa Rest API for developers and a strong authentication platform for the enterprise.",
+            "homepage": "https://rinvex.com",
+            "keywords": [
+                "Authentication",
+                "authy",
+                "automated",
+                "call",
+                "message",
+                "phone",
+                "register",
+                "rinvex",
+                "security",
+                "sms",
+                "token",
+                "twofactor",
+                "verification"
+            ],
+            "support": {
+                "docs": "https://github.com/rinvex/authy/README.md",
+                "email": "help@rinvex.com",
+                "issues": "https://github.com/rinvex/authy/issues",
+                "source": "https://github.com/rinvex/authy"
+            },
+            "time": "2021-08-22T00:44:01+00:00"
+        },
+        {
+            "name": "rinvex/laravel-authy",
+            "version": "v9.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rinvex/laravel-authy.git",
+                "reference": "e9b489c3f39fe8b494c0b03fb06bde43cf405ecb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rinvex/laravel-authy/zipball/e9b489c3f39fe8b494c0b03fb06bde43cf405ecb",
+                "reference": "e9b489c3f39fe8b494c0b03fb06bde43cf405ecb",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.2.0",
+                "illuminate/support": "^8.0.0 || ^9.0.0",
+                "php": "^8.0.0",
+                "rinvex/authy": "^6.0.0"
+            },
+            "require-dev": {
+                "codedungeon/phpunit-result-printer": "^0.31.0",
+                "illuminate/container": "^8.0.0 || ^9.0.0",
+                "phpunit/phpunit": "^9.5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rinvex\\Authy\\Providers\\AuthyServiceProvider"
+                    ],
+                    "aliases": {
+                        "AuthyApp": "Rinvex\\Authy\\Facades\\AuthyApp",
+                        "AuthyUser": "Rinvex\\Authy\\Facades\\AuthyUser",
+                        "AuthyToken": "Rinvex\\Authy\\Facades\\AuthyToken"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rinvex\\Authy\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rinvex LLC",
+                    "email": "help@rinvex.com",
+                    "homepage": "https://rinvex.com"
+                },
+                {
+                    "name": "Abdelrahman Omran",
+                    "email": "me@omranic.com",
+                    "homepage": "https://omranic.com",
+                    "role": "Project Lead"
+                },
+                {
+                    "name": "The Generous Laravel Community",
+                    "homepage": "https://github.com/rinvex/laravel-authy/contributors"
+                }
+            ],
+            "description": "Rinvex Authy is a simple wrapper for Authy TOTP, the best rated Two-Factor Authentication service for consumers, simplest 2fa Rest API for developers and a strong authentication platform for the enterprise.",
+            "homepage": "https://rinvex.com",
+            "keywords": [
+                "Authentication",
+                "authy",
+                "automated",
+                "call",
+                "laravel",
+                "message",
+                "phone",
+                "register",
+                "rinvex",
+                "security",
+                "sms",
+                "token",
+                "twofactor",
+                "verification"
+            ],
+            "support": {
+                "docs": "https://github.com/rinvex/laravel-authy/README.md",
+                "email": "help@rinvex.com",
+                "issues": "https://github.com/rinvex/laravel-authy/issues",
+                "source": "https://github.com/rinvex/laravel-authy"
+            },
+            "time": "2021-08-22T00:46:46+00:00"
+        },
+        {
+            "name": "spomky-labs/otphp",
+            "version": "v10.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Spomky-Labs/otphp.git",
+                "reference": "f44cce5a9db4b8da410215d992110482c931232f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Spomky-Labs/otphp/zipball/f44cce5a9db4b8da410215d992110482c931232f",
+                "reference": "f44cce5a9db4b8da410215d992110482c931232f",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "^3.0",
+                "ext-mbstring": "*",
+                "paragonie/constant_time_encoding": "^2.0",
+                "php": "^7.2|^8.0",
+                "thecodingmachine/safe": "^0.1.14|^1.0"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-beberlei-assert": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/phpunit": "^8.0",
+                "thecodingmachine/phpstan-safe-rule": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "v10.0": "10.0.x-dev",
+                    "v9.0": "9.0.x-dev",
+                    "v8.3": "8.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OTPHP\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/Spomky-Labs/otphp/contributors"
+                }
+            ],
+            "description": "A PHP library for generating one time passwords according to RFC 4226 (HOTP Algorithm) and the RFC 6238 (TOTP Algorithm) and compatible with Google Authenticator",
+            "homepage": "https://github.com/Spomky-Labs/otphp",
+            "keywords": [
+                "FreeOTP",
+                "RFC 4226",
+                "RFC 6238",
+                "google authenticator",
+                "hotp",
+                "otp",
+                "totp"
+            ],
+            "support": {
+                "issues": "https://github.com/Spomky-Labs/otphp/issues",
+                "source": "https://github.com/Spomky-Labs/otphp/tree/v10.0.1"
+            },
+            "time": "2020-01-28T09:24:19+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6476,6 +7537,145 @@
             "time": "2022-01-17T16:30:37+00:00"
         },
         {
+            "name": "thecodingmachine/safe",
+            "version": "v1.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thecodingmachine/safe.git",
+                "reference": "a8ab0876305a4cdaef31b2350fcb9811b5608dbc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thecodingmachine/safe/zipball/a8ab0876305a4cdaef31b2350fcb9811b5608dbc",
+                "reference": "a8ab0876305a4cdaef31b2350fcb9811b5608dbc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12",
+                "squizlabs/php_codesniffer": "^3.2",
+                "thecodingmachine/phpstan-strict-rules": "^0.12"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "deprecated/apc.php",
+                    "deprecated/libevent.php",
+                    "deprecated/mssql.php",
+                    "deprecated/stats.php",
+                    "lib/special_cases.php",
+                    "generated/apache.php",
+                    "generated/apcu.php",
+                    "generated/array.php",
+                    "generated/bzip2.php",
+                    "generated/calendar.php",
+                    "generated/classobj.php",
+                    "generated/com.php",
+                    "generated/cubrid.php",
+                    "generated/curl.php",
+                    "generated/datetime.php",
+                    "generated/dir.php",
+                    "generated/eio.php",
+                    "generated/errorfunc.php",
+                    "generated/exec.php",
+                    "generated/fileinfo.php",
+                    "generated/filesystem.php",
+                    "generated/filter.php",
+                    "generated/fpm.php",
+                    "generated/ftp.php",
+                    "generated/funchand.php",
+                    "generated/gmp.php",
+                    "generated/gnupg.php",
+                    "generated/hash.php",
+                    "generated/ibase.php",
+                    "generated/ibmDb2.php",
+                    "generated/iconv.php",
+                    "generated/image.php",
+                    "generated/imap.php",
+                    "generated/info.php",
+                    "generated/ingres-ii.php",
+                    "generated/inotify.php",
+                    "generated/json.php",
+                    "generated/ldap.php",
+                    "generated/libxml.php",
+                    "generated/lzf.php",
+                    "generated/mailparse.php",
+                    "generated/mbstring.php",
+                    "generated/misc.php",
+                    "generated/msql.php",
+                    "generated/mysql.php",
+                    "generated/mysqli.php",
+                    "generated/mysqlndMs.php",
+                    "generated/mysqlndQc.php",
+                    "generated/network.php",
+                    "generated/oci8.php",
+                    "generated/opcache.php",
+                    "generated/openssl.php",
+                    "generated/outcontrol.php",
+                    "generated/password.php",
+                    "generated/pcntl.php",
+                    "generated/pcre.php",
+                    "generated/pdf.php",
+                    "generated/pgsql.php",
+                    "generated/posix.php",
+                    "generated/ps.php",
+                    "generated/pspell.php",
+                    "generated/readline.php",
+                    "generated/rpminfo.php",
+                    "generated/rrd.php",
+                    "generated/sem.php",
+                    "generated/session.php",
+                    "generated/shmop.php",
+                    "generated/simplexml.php",
+                    "generated/sockets.php",
+                    "generated/sodium.php",
+                    "generated/solr.php",
+                    "generated/spl.php",
+                    "generated/sqlsrv.php",
+                    "generated/ssdeep.php",
+                    "generated/ssh2.php",
+                    "generated/stream.php",
+                    "generated/strings.php",
+                    "generated/swoole.php",
+                    "generated/uodbc.php",
+                    "generated/uopz.php",
+                    "generated/url.php",
+                    "generated/var.php",
+                    "generated/xdiff.php",
+                    "generated/xml.php",
+                    "generated/xmlrpc.php",
+                    "generated/yaml.php",
+                    "generated/yaz.php",
+                    "generated/zip.php",
+                    "generated/zlib.php"
+                ],
+                "psr-4": {
+                    "Safe\\": [
+                        "lib/",
+                        "deprecated/",
+                        "generated/"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHP core functions that throw exceptions instead of returning FALSE on error",
+            "support": {
+                "issues": "https://github.com/thecodingmachine/safe/issues",
+                "source": "https://github.com/thecodingmachine/safe/tree/v1.3.3"
+            },
+            "time": "2020-10-28T17:51:34+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.4",
             "source": {
@@ -6527,6 +7727,59 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.4"
             },
             "time": "2021-12-08T09:12:39+00:00"
+        },
+        {
+            "name": "twilio/sdk",
+            "version": "6.34.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twilio/twilio-php.git",
+                "reference": "336cc54d70a6e05f397ee25777d79482a4574efd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/336cc54d70a6e05f397ee25777d79482a4574efd",
+                "reference": "336cc54d70a6e05f397ee25777d79482a4574efd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "phpunit/phpunit": ">=7.0"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Twilio\\": "src/Twilio/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Twilio API Team",
+                    "email": "api@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "https://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "support": {
+                "issues": "https://github.com/twilio/twilio-php/issues",
+                "source": "https://github.com/twilio/twilio-php/tree/6.34.0"
+            },
+            "time": "2022-02-09T23:51:45+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

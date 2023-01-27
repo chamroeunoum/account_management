@@ -76,4 +76,14 @@ class User extends Authenticatable
     public function phoneConfirmation($code){
         return $this->verification_codes == $code ? true : false ;
     }
+    /**
+     * Route notifications for the authy channel.
+     *
+     * @return int
+     */
+    public function routeNotificationForAuthy()
+    {
+        return $this->authy_id;
+    }
+
 }

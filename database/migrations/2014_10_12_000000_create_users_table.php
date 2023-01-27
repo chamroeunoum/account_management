@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->integer('active')->default(0)->comment('The status of activate and deactivate of an account.');
             $table->integer('people_id')->nullable(false)->comment('The id of the people who is the owner of the account.');
             $table->string('varification_codes')->nullable(true);
+            $table->integer('authy_id')->default(0);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

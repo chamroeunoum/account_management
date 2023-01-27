@@ -169,16 +169,32 @@ class CrudController extends Controller {
                         $fieldIndex > 0
                             ? $query->orWhere(function($query) use ($field, $searchWords) {
                                     foreach( $searchWords AS $wordIndex => $word ){
-                                        $wordIndex > 0
-                                        ? $query->orWhere($field, 'LIKE', "%" . $word . "%")
-                                        : $query->where($field, 'LIKE', "%" . $word . "%");
+                                        if(strlen($word)<=0)continue;
+                                        /**
+                                         * Use to get all records that contains one or more of string search
+                                         */
+                                        // $wordIndex > 0 
+                                        // ? $query->orWhere($field, 'LIKE', "%" . $word . "%")
+                                        // : $query->where($field, 'LIKE', "%" . $word . "%");
+                                        /**
+                                         * Use to get all records that matched all conditions
+                                         */
+                                        $query->where($field, 'LIKE', "%" . $word . "%");
                                     }
                                 })
                             : $query->where(function($query) use ($field, $searchWords) {
                                 foreach( $searchWords AS $wordIndex => $word ){
-                                    $wordIndex > 0
-                                    ? $query->orWhere($field, 'LIKE', "%" . $word . "%")
-                                    : $query->where($field, 'LIKE', "%" . $word . "%");
+                                    if(strlen($word)<=0)continue;
+                                        /**
+                                         * Use to get all records that contains one or more of string search
+                                         */
+                                        // $wordIndex > 0 
+                                        // ? $query->orWhere($field, 'LIKE', "%" . $word . "%")
+                                        // : $query->where($field, 'LIKE', "%" . $word . "%");
+                                        /**
+                                         * Use to get all records that matched all conditions
+                                         */
+                                        $query->where($field, 'LIKE', "%" . $word . "%");
                                 }
                             });
                     }
@@ -200,16 +216,30 @@ class CrudController extends Controller {
                                         $fieldIndex > 0
                                         ? $pivotQuery->orWhere(function ($query) use ($field, $searchWords) {
                                             foreach ($searchWords as $wordIndex => $word) {
-                                                $wordIndex > 0
-                                                ? $query->orWhere($field, 'LIKE', "%" . $word . "%")
-                                                : $query->where($field, 'LIKE', "%" . $word . "%");
+                                                /**
+                                                 * Use to get all records that contains one or more of string search
+                                                 */
+                                                // $wordIndex > 0 
+                                                // ? $query->orWhere($field, 'LIKE', "%" . $word . "%")
+                                                // : $query->where($field, 'LIKE', "%" . $word . "%");
+                                                /**
+                                                 * Use to get all records that matched all conditions
+                                                 */
+                                                $query->where($field, 'LIKE', "%" . $word . "%");
                                             }
                                         })
                                         : $pivotQuery->where(function ($query) use ($field, $searchWords) {
                                             foreach ($searchWords as $wordIndex => $word) {
-                                                $wordIndex > 0
-                                                ? $query->orWhere($field, 'LIKE', "%" . $word . "%")
-                                                : $query->where($field, 'LIKE', "%" . $word . "%");
+                                                /**
+                                                 * Use to get all records that contains one or more of string search
+                                                 */
+                                                // $wordIndex > 0 
+                                                // ? $query->orWhere($field, 'LIKE', "%" . $word . "%")
+                                                // : $query->where($field, 'LIKE', "%" . $word . "%");
+                                                /**
+                                                 * Use to get all records that matched all conditions
+                                                 */
+                                                $query->where($field, 'LIKE', "%" . $word . "%");
                                             }
                                         });
                                     }
@@ -223,13 +253,13 @@ class CrudController extends Controller {
         return $query_builder;
     }
 
-    public function getRecords($formatRecord=false){
+    public function getRecords($formatRecord=false, $fieldsWithCallback = false){
         return $formatRecord
             ? $this->formatRecords( $this->getListBuilder()->get() )
             : $this->getListBuilder()->get() ;
     }
 
-    public function pagination($formatRecord = false, $query_builder = false){
+    public function pagination($formatRecord = false, $query_builder = false, $fieldsWithCallback = false){
         // $query_builder = $query_builder !== false ? $query_builder : $this->getListBuilder() ;
         $query_builder = $query_builder !== false ? $query_builder : $this->getListBuilder();
         /** Get the page variable for pagination */
@@ -288,60 +318,62 @@ class CrudController extends Controller {
         return [
             'pagination' => $pagination ,
             'records' => $formatRecord
-                ? $this->formatRecords($query_builder->get())
+                ? $this->formatRecords($query_builder->get(), $fieldsWithCallback )
                 : $query_builder->get()
         ];
     }
 
     /** Map Photo */
-    public function formatRecords(Collection $collection)
+    public function formatRecords(Collection $collection, $fieldsWithCallback=false)
     {
-        return $collection->map(function ($record) {
-            return $this->formatRecord($record);
+        return $collection->map(function ($record) use ($fieldsWithCallback) {
+            return $this->formatRecord($record,$fieldsWithCallback);
         });
     }
-    public function formatRecord($record){
-        if (isset($record->photos) && is_array($record->photos) ){
-            $photos = [];
-            foreach ($record->photos as $index => $photo) {
-                if ($photo != null && Storage::disk(env('STORAGE_DRIVER','public'))->exists($photo)) {
-                    $photos[] = Storage::disk(env('STORAGE_DRIVER','public'))->url($photo);
-                }
-            }
-            $record->photos = $photos;
-        }
-        else{
-            if( isset($record->photos ) ) $record->photos = [] ;
-        }
-        $pdfs = [];
-        if (isset($record->pdfs) && is_array($record->pdfs)) {
-            foreach ($record->pdfs as $index => $pdf) {
-                if ($pdf != null && Storage::disk(env('STORAGE_DRIVER','public'))->exists($pdf)) {
-                    $pdfs[] = Storage::disk(env('STORAGE_DRIVER','public'))->url($pdf);
-                }
-            }
-        } else if( isset($record->pdfs) && !is_array($record->pdfs) ) {
-            if (Storage::disk(env('STORAGE_DRIVER','public'))->exists($record->pdfs)) {
-                $pdfs[] = Storage::disk(env('STORAGE_DRIVER','public'))->url($record->pdfs);
-            }else{
-                $pdfs=[];
-            }
-        }
-        $record->pdfs = $pdfs;
-        /** In case, record has field avatar_url */
-        if (isset($record->avatar_url ) && $record->avatar_url !== "" ) {
-            if (Storage::disk(env('STORAGE_DRIVER','public'))->exists($record->avatar_url)) {
-                $record->avatar_url = Storage::disk(env('STORAGE_DRIVER','public'))->url($record->avatar_url);
-            } else {
-                $record->avatar_url = null;
-            }
-        } else {
-            if (isset($record->avatar_url)) $record->avatar_url = null ;
-        }
+    public function formatRecord($record, $fieldsWithCallback = false){
+        // if (isset($record->photos) && is_array($record->photos) ){
+        //     $photos = [];
+        //     foreach ($record->photos as $index => $photo) {
+        //         if ($photo != null && Storage::disk(env('STORAGE_DRIVER','public'))->exists($photo)) {
+        //             $photos[] = Storage::disk(env('STORAGE_DRIVER','public'))->url($photo);
+        //         }
+        //     }
+        //     $record->photos = $photos;
+        // }
+        // else{
+        //     if( isset($record->photos ) ) $record->photos = [] ;
+        // }
+        // $pdfs = [];
+        // if (isset($record->pdfs) && is_array($record->pdfs)) {
+        //     foreach ($record->pdfs as $index => $pdf) {
+        //         if ($pdf != null && Storage::disk(env('STORAGE_DRIVER','public'))->exists($pdf)) {
+        //             $pdfs[] = Storage::disk(env('STORAGE_DRIVER','public'))->url($pdf);
+        //         }
+        //     }
+        // } else if( isset($record->pdfs) && !is_array($record->pdfs) ) {
+        //     if (Storage::disk(env('STORAGE_DRIVER','public'))->exists($record->pdfs)) {
+        //         $pdfs[] = Storage::disk(env('STORAGE_DRIVER','public'))->url($record->pdfs);
+        //     }else{
+        //         $pdfs=[];
+        //     }
+        // }
+        // $record->pdfs = $pdfs;
+        // /** In case, record has field avatar_url */
+        // if (isset($record->avatar_url ) && $record->avatar_url !== "" ) {
+        //     if (Storage::disk(env('STORAGE_DRIVER','public'))->exists($record->avatar_url)) {
+        //         $record->avatar_url = Storage::disk(env('STORAGE_DRIVER','public'))->url($record->avatar_url);
+        //     } else {
+        //         $record->avatar_url = null;
+        //     }
+        // } else {
+        //     if (isset($record->avatar_url)) $record->avatar_url = null ;
+        // }
         /** Construct format of the record */
         $customRecord = [];
         if (isset( $record ) && !empty($this->fields)) {
-            foreach ($this->fields as $key => $field) $customRecord[$field] = $record->$field;
+            foreach ($this->fields as $key => $field){
+                $customRecord[$field] = $fieldsWithCallback !== false && is_array( $fieldsWithCallback ) && !empty( $fieldsWithCallback ) && array_key_exists( $field , $fieldsWithCallback ) ? $fieldsWithCallback[$field]($record->$field) : $record->$field ;
+            }
         }
         /** Call the relationship functions */
         if (isset($record) &&  !empty($this->relationshipFunctions)) {
@@ -386,7 +418,7 @@ class CrudController extends Controller {
      * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
-    public function forFilter()
+    public function compactList()
     {
         return $this->getListBuilder()->where('active',1)->get();
     }
@@ -466,18 +498,31 @@ class CrudController extends Controller {
      * @param   $field_name : table field that is work with file / photo
      *          $path : path to store the file
      *          $file : file to be stored
+     *          $keepExisting : true -> keep the existing file , false delete existing file and save the new one
      */
-    public function upload($field_name,$path,$file, $fileName=false)
+    public function upload($field_name,$path,$file, $fileName=false, $keepExisting=true)
     {
         if (($record = $this->model->find($this->request->id))!==null) {
+            /**
+             * Check the files and delete them
+             */
+            $files = is_array( $record->$field_name ) ? ( !empty( $record->$field_name ) ? $record->$field_name : [] ) : ( $record->$field_name !== "" ? [ $record->$field_name ] : [] ) ;
+            if( !$keepExisting ){
+                /**
+                 * Delete all the existing files
+                 */
+                Storage::disk(env('STORAGE_DRIVER','public'))->delete( $files );
+                $files = [] ;
+            }
+            /**
+             * Save new file
+             */
             $uniqeName = '' ;
             if($fileName !== false ){
                 $uniqeName = Storage::disk(env('STORAGE_DRIVER','public'))->putFileAs($path, new File($file), $fileName , 'public');
             }else{
                 $uniqeName = Storage::disk(env('STORAGE_DRIVER','public'))->putFile($path, new File($file), 'public');
             }
-
-            $files = is_array( $record->$field_name ) ? $record->$field_name : [ $record->$field_name ];
             $files[] = $uniqeName;
             $record->$field_name = $files;
             $record->save();
@@ -559,24 +604,16 @@ class CrudController extends Controller {
     /**
      *
      * @param : $array_fields
-     * @param : $shifter
+     * @param : $shifter 
      * @return: object , false
      */
     public function exists($array_fields,$shifter=false){
         if( isset($array_fields ) && !empty($array_fields ) ){
-            if( $shifter ){
-                $this->model = $this->model->where(function ($query) use ($array_fields) {
-                    foreach ($array_fields as $index => $field) {
-                        $query->where($field, $this->request->$field);
-                    }
-                });
-            }else{
-                $this->model = $this->model->where(function ($query) use ($array_fields) {
-                    foreach ($array_fields as $index => $field) {
-                        $query->where($field, $this->request->$field);
-                    }
-                });
-            }
+            $this->model = $this->model->where(function ($query) use ($array_fields) {
+                foreach ($array_fields as $index => $field) {
+                    $query->where($field, $this->request->$field);
+                }
+            });
             return $this->model->count() ? $this->model->first() : false ;
         }
         return false ;

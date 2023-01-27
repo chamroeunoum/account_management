@@ -1,0 +1,99 @@
+/**
+ * Define fonts
+ */
+@font-face {
+    font-family: "btb-black";
+    src: url("assets/fonts/Battambang/Battambang-Black.ttf");
+}
+.font-btb-black {
+  font-family: "btb-black";
+}
+@font-face {
+  font-family: "btb-bold";
+  src: url("assets/fonts/Battambang/Battambang-Bold.ttf");
+}
+.font-btb-bold {
+  font-family: "btb-bold";
+}
+@font-face {
+  font-family: "btb-light";
+  src: url("assets/fonts/Battambang/Battambang-Light.ttf");
+}
+.font-btb-light {
+  font-family: "btb-light";
+}
+@font-face {
+  font-family: "btb-regular";
+  src: url("assets/fonts/Battambang/Battambang-Regular.ttf");
+}
+.font-btb {
+  font-family: "btb-regular";
+}
+@font-face {
+  font-family: "btb-thin";
+  src: url("assets/fonts/Battambang/Battambang-Thin.ttf");
+}
+.font-btb-thin {
+  font-family: "btb-thin";
+}
+
+@font-face {
+  font-family: "dangrek";
+  src: url("assets/fonts/Dangrek/Dangrek-Regular.ttf");
+}
+.font-dangrek {
+  font-family: "dangrek";
+}
+
+@font-face {
+  font-family: "kantumruy";
+  src: url("assets/fonts/Kantumruy/Kantumruy-Regular.ttf");
+}
+.font-ktr {
+  font-family: "kantumruy";
+}
+@font-face {
+  font-family: "kantumruy-light";
+  src: url("assets/fonts/Kantumruy/Kantumruy-Light.ttf");
+}
+.font-ktr-light {
+  font-family: "kantumruy-light";
+}
+@font-face {
+  font-family: "kantumruy-bold";
+  src: url("assets/fonts/Kantumruy/Kantumruy-Bold.ttf");
+}
+.font-ktr-bold {
+  font-family: "kantumruy-bold";
+}
+@font-face {
+  font-family: moul;
+  src: url("assets/fonts/Moul/Moul-Regular.ttf");
+}
+.font-muol {
+  font-family: moul;
+}
+@font-face {
+  font-family: moulpali;
+  src: url("assets/fonts/Moulpali/Moulpali-Regular.ttf");
+}
+.font-moulpali {
+  font-family: moulpali;
+}
+@font-face {
+  font-family: preahvihear;
+  src: url("assets/fonts/Preahvihear/Preahvihear-Regular.ttf");
+}
+.font-pvh {
+  font-family: preahvihear;
+}
+@font-face {
+  font-family: siemreap;
+  src: url("assets/fonts/Siemreap/Siemreap-Regular.ttf");
+}
+.font-sr {
+  font-family: siemreap;
+}
+body * {
+  font-family: Arial, Helvetica, sans-serif, kantumruy;
+}

@@ -34,4 +34,7 @@ return [
         'token' => env('TELEGRAM_BOT_TOKEN', env('TELEGRAM_BOT_TOKEN') )
     ],
 
+    'authy' => [
+        'secret' => env('AUTHY_SECRET'),
+    ],
 ];
