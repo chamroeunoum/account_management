@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.5",
         "lasserafn/php-initial-avatar-generator": "^4.2",
         "lcobucci/jwt": "^4.1",
+        "orangehill/iseed": "^3.0",
         "spomky-labs/otphp": "^10.0",
         "twilio/sdk": "^6.34"
     },
