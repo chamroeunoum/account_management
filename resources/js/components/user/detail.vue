@@ -60,7 +60,7 @@
 import { reactive, computed } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter, useRoute } from 'vue-router'
-import Vue3Barcode from 'vue3-barcode'
+
 import { Switcher } from '@vicons/carbon'
 import { Icon } from '@vicons/utils'
 import { IosCheckmarkCircleOutline, IosRefresh } from '@vicons/ionicons4'
@@ -75,7 +75,7 @@ import UpdateForm from './update.vue'
 export default {
   name: "User" ,
   components: {
-    Vue3Barcode,
+    ,
     Switcher,
     Add20Regular ,
     Icon,

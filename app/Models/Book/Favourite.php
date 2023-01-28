@@ -38,7 +38,7 @@ class Favourite extends Model
     }
     // get the details of the matra of the current favourite
     public function matra(){
-        return $this->belongsTo(\App\Models\Regulator\Matra::class,'matra_id');
+        return $this->belongsTo(\App\Models\Book\Matra::class,'matra_id');
     }
     /*
     |--------------------------------------------------------------------------

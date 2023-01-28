@@ -120,7 +120,7 @@ import { reactive, computed, ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 import QrcodeVue from 'qrcode.vue'
-import Vue3Barcode from 'vue3-barcode'
+
 import { Switcher, Filter } from '@vicons/carbon'
 import { Icon } from '@vicons/utils'
 import { IosCheckmarkCircleOutline, IosRefresh } from '@vicons/ionicons4'
@@ -136,7 +136,7 @@ export default {
   name: "Regulator" ,
   components: {
     QrcodeVue ,
-    Vue3Barcode,
+    ,
     Switcher,
     Add20Regular ,
     Icon,

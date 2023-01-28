@@ -58,27 +58,27 @@ class Kunty extends Model
         return $this->belongsTo(\App\User::class,'updated_by');
     }
     public function regulator(){
-        return $this->belongsTo(\App\Models\Regulator\Regulator::class,'regulator_id','id');
+        return $this->belongsTo(\App\Models\Book\Regulator::class,'regulator_id','id');
     }
     public function matikas()
     {
-        return $this->hasMany(\App\Models\Regulator\Matika::class, 'kunty_id', 'id');
+        return $this->hasMany(\App\Models\Book\Matika::class, 'kunty_id', 'id');
     }
     public function chapters()
     {
-        return $this->hasMany(\App\Models\Regulator\Chapter::class, 'kunty_id', 'id');
+        return $this->hasMany(\App\Models\Book\Chapter::class, 'kunty_id', 'id');
     }
     public function parts()
     {
-        return $this->hasMany(\App\Models\Regulator\Part::class, 'kunty_id', 'id');
+        return $this->hasMany(\App\Models\Book\Part::class, 'kunty_id', 'id');
     }
     public function sections()
     {
-        return $this->hasMany(\App\Models\Regulator\Section::class, 'kunty_id', 'id');
+        return $this->hasMany(\App\Models\Book\Section::class, 'kunty_id', 'id');
     }
     public function matras()
     {
-        return $this->hasMany(\App\Models\Regulator\Matra::class,'kunty_id','id');
+        return $this->hasMany(\App\Models\Book\Matra::class,'kunty_id','id');
     }
     /*
     |--------------------------------------------------------------------------

@@ -414,7 +414,7 @@ Route::middleware('auth:api')->namespace('\App\Http\Controllers\Api\Task')->pref
 /**
  * Webapp APInav
  */
-Route::middleware('api')->namespace('\App\Http\Controllers\Api\Webapp\Regulator')->prefix('webapp')->group(function(){
+Route::middleware('api')->namespace('\App\Http\Controllers\Api\Webapp\Book')->prefix('webapp')->group(function(){
     /**
      * Regulators
      */

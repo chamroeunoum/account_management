@@ -51,27 +51,27 @@ class Matika extends Model
     }
     public function regulator()
     {
-        return $this->belongsTo(\App\Models\Regulator\Regulator::class, 'regulator_id', 'id');
+        return $this->belongsTo(\App\Models\Book\Regulator::class, 'regulator_id', 'id');
     }
     public function kunty()
     {
-        return $this->belongsTo(\App\Models\Regulator\Kunty::class, 'kunty_id', 'id');
+        return $this->belongsTo(\App\Models\Book\Kunty::class, 'kunty_id', 'id');
     }
     public function chapters()
     {
-        return $this->hasMany(\App\Models\Regulator\Chapter::class, 'matika_id', 'id');
+        return $this->hasMany(\App\Models\Book\Chapter::class, 'matika_id', 'id');
     }
     public function parts()
     {
-        return $this->hasMany(\App\Models\Regulator\Part::class,'matika_id','id');
+        return $this->hasMany(\App\Models\Book\Part::class,'matika_id','id');
     }
     public function sections()
     {
-        return $this->hasMany(\App\Models\Regulator\Section::class, 'matika_id', 'id');
+        return $this->hasMany(\App\Models\Book\Section::class, 'matika_id', 'id');
     }
     public function matras()
     {
-        return $this->hasMany(\App\Models\Regulator\Matra::class,'matika_id','id');
+        return $this->hasMany(\App\Models\Book\Matra::class,'matika_id','id');
     }
     /*
     |--------------------------------------------------------------------------

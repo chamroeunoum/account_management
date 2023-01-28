@@ -106,7 +106,7 @@
 import { reactive , ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import Vue3Barcode from 'vue3-barcode'
+
 import { Switcher } from '@vicons/carbon'
 import { Icon } from '@vicons/utils'
 import { IosCheckmarkCircleOutline, IosRefresh } from '@vicons/ionicons4'
@@ -151,7 +151,7 @@ export default {
   },
   name: "ListComponent" ,
   components: {
-    Vue3Barcode,
+    ,
     Switcher,
     Add20Regular ,
     Icon,
