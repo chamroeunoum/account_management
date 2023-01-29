@@ -33,10 +33,10 @@ class FolderMatra extends Model
     |--------------------------------------------------------------------------
     */
     public function folder(){
-        return $this->belongsTo(\App\Models\Archive\Folder::class,'folder_id','id');
+        return $this->belongsTo(\App\Models\Book\Folder::class,'folder_id','id');
     }
     public function matra(){
-        return $this->belongsTo(\App\Models\Archive\Matra::class,'matra_id','id');
+        return $this->belongsTo(\App\Models\Book\Matra::class,'matra_id','id');
     }
     /*
     |--------------------------------------------------------------------------

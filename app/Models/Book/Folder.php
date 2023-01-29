@@ -36,7 +36,7 @@ class Folder extends Model
         return $this->belongsTo(\App\User::class,'user_id');
     }
     public function archives(){
-        return $this->belongsToMany(\App\Models\Regulator\Regulator::class,'folder_archives','folder_id','regulator_id');
+        return $this->belongsToMany(\App\Models\Book\Book::class,'folder_archives','folder_id','bid');
     }
 
     /*

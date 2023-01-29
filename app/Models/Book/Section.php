@@ -40,27 +40,27 @@ class Section extends Model
     }
     public function archive()
     {
-        return $this->belongsTo(\App\Models\Regulator\Regulator::class, 'regulator_id', 'id');
+        return $this->belongsTo(\App\Models\Book\Book::class, 'bid', 'id');
     }
     public function kunty()
     {
-        return $this->belongsTo(\App\Models\Regulator\Kunty::class,'kunty_id','id');
+        return $this->belongsTo(\App\Models\Book\Kunty::class,'kunty_id','id');
     }
     public function matika()
     {
-        return $this->belongsTo(\App\Models\Regulator\Matika::class, 'matika_id', 'id');
+        return $this->belongsTo(\App\Models\Book\Matika::class, 'matika_id', 'id');
     }
     public function chapter()
     {
-        return $this->belongsTo(\App\Models\Regulator\Chapter::class, 'chapter_id', 'id');
+        return $this->belongsTo(\App\Models\Book\Chapter::class, 'chapter_id', 'id');
     }
     public function part()
     {
-        return $this->belongsTo(\App\Models\Regulator\Part::class, 'part_id', 'id');
+        return $this->belongsTo(\App\Models\Book\Part::class, 'part_id', 'id');
     }
     public function matras()
     {
-        return $this->hasMany(\App\Models\Regulator\Matra::class, 'section_id', 'id');
+        return $this->hasMany(\App\Models\Book\Matra::class, 'section_id', 'id');
     }
     /*
     |--------------------------------------------------------------------------

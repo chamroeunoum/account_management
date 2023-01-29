@@ -51,27 +51,27 @@ class Part extends Model
     }
     public function regulator()
     {
-        return $this->belongsTo(\App\Models\regulator\regulator::class, 'regulator_id', 'id');
+        return $this->belongsTo(\App\Models\Book\Book::class, 'bid', 'id');
     }
     public function kunty()
     {
-        return $this->belongsTo(\App\Models\regulator\Kunty::class, 'kunty_id', 'id');
+        return $this->belongsTo(\App\Models\Book\Kunty::class, 'kunty_id', 'id');
     }
     public function matika()
     {
-        return $this->belongsTo(\App\Models\regulator\Matika::class, 'matika_id', 'id');
+        return $this->belongsTo(\App\Models\Book\Matika::class, 'matika_id', 'id');
     }
     public function chapter()
     {
-        return $this->belongsTo(\App\Models\regulator\Chapter::class, 'chapter_id', 'id');
+        return $this->belongsTo(\App\Models\Book\Chapter::class, 'chapter_id', 'id');
     }
     public function sections()
     {
-        return $this->hasMany(\App\Models\regulator\Section::class, 'part_id', 'id');
+        return $this->hasMany(\App\Models\Book\Section::class, 'part_id', 'id');
     }
     public function matras()
     {
-        return $this->hasMany(\App\Models\regulator\Matra::class, 'part_id', 'id');
+        return $this->hasMany(\App\Models\Book\Matra::class, 'part_id', 'id');
     }
     /*
     |--------------------------------------------------------------------------
