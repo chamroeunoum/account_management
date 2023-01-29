@@ -49,29 +49,25 @@ class Chapter extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'updated_by');
     }
-    public function regulator()
-    {
-        return $this->belongsTo(\App\Models\Regulator\Regulator::class, 'regulator_id', 'id');
-    }
     public function kunty()
     {
-        return $this->belongsTo(\App\Models\Regulator\Kunty::class, 'kunty_id', 'id');
+        return $this->belongsTo(\App\Models\Book\Kunty::class, 'kunty_id', 'id');
     }
     public function matika()
     {
-        return $this->belongsTo(\App\Models\Regulator\Matika::class,'matika_id','id');
+        return $this->belongsTo(\App\Models\Book\Matika::class,'matika_id','id');
     }
     public function parts()
     {
-        return $this->hasMany(\App\Models\Regulator\Part::class,'chapter_id','id');
+        return $this->hasMany(\App\Models\Book\Part::class,'chapter_id','id');
     }
     public function sections()
     {
-        return $this->hasMany(\App\Models\Regulator\Section::class, 'chapter_id', 'id');
+        return $this->hasMany(\App\Models\Book\Section::class, 'chapter_id', 'id');
     }
     public function matras()
     {
-        return $this->hasMany(\App\Models\Regulator\Matra::class,'chapter_id','id');
+        return $this->hasMany(\App\Models\Book\Matra::class,'chapter_id','id');
     }
     /*
     |--------------------------------------------------------------------------

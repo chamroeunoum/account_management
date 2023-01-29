@@ -88,7 +88,7 @@
 <script>
 import { reactive, ref } from 'vue'
 import QrcodeVue from 'qrcode.vue'
-import Vue3Barcode from 'vue3-barcode'
+
 import { Switcher } from '@vicons/carbon'
 import { Icon } from '@vicons/utils'
 /**
@@ -99,7 +99,7 @@ import UpdateForm from './update.vue'
 export default {
   components: {
     QrcodeVue ,
-    Vue3Barcode,
+    ,
     Switcher,
     Icon,
     CreateForm,

@@ -76,7 +76,7 @@
 </template>
 <script>
 import { reactive, ref } from 'vue'
-import Vue3Barcode from 'vue3-barcode'
+
 import { Switcher } from '@vicons/carbon'
 import { Icon } from '@vicons/utils'
 /**
@@ -86,7 +86,7 @@ import CreateForm from './create.vue'
 import UpdateForm from './update.vue'
 export default {
   components: {
-    Vue3Barcode,
+    ,
     Switcher,
     Icon,
     CreateForm,

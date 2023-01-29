@@ -11,9 +11,9 @@ class FolderBook extends Model
     protected $fillable = ['folder_id','bid'];
 
     public function folder(){
-        return $this->belongsTo(\App\Models\Regulator\Folder::class,'bid','id');
+        return $this->belongsTo(\App\Models\Book\Folder::class,'bid','id');
     }
-    public function archive(){
-        return $this->belongsTo(\App\Models\Regulator\Regulator::class,'bid','id');
+    public function book(){
+        return $this->belongsTo(\App\Models\Book\BOok::class,'bid','id');
     }
 }

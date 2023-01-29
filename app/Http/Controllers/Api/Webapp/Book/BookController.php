@@ -14,7 +14,7 @@ use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\CrudController;
 
-class RegulatorController extends Controller
+class BookController extends Controller
 {
     private $selectedFields ;
     public function __construct(){

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book\Book;
 use App\Models\Book\Kunty;
-use App\Models\Regulator\Chapter AS RecordModel;
+use App\Models\Book\Chapter AS RecordModel;
 use App\Models\Book\Matika;
 use App\Models\Book\Part;
 use App\Models\Book\Section;
@@ -136,7 +136,7 @@ class ChapterController extends Controller
         $responseData['ok'] = true ;
         return response()->json($responseData);
     }
-    /** Create a new Regulator */
+    /** Create a new Book */
     public function store(Request $request){
         // if( ($user = $request->user() ) !== null ){
         //     $archiveUnits = $request->get('unit_ids',false);
@@ -153,7 +153,7 @@ class ChapterController extends Controller
         //     //     'units' => false
         //     // ]);
         //     if (($record = $crud->create()) !== false) {
-        //         /** Link the Regulator to the units */
+        //         /** Link the Book to the units */
         //         $updatedArchiveUnits = [];
         //         if($archiveUnits && is_array($archiveUnits)){
         //             foreach( $archiveUnits AS $archiveUnit ){
@@ -186,7 +186,7 @@ class ChapterController extends Controller
         // ], 401);
 
     }
-    /** Updating the Regulator */
+    /** Updating the Book */
     public function update(Request $request)
     {
         // if (($user = $request->user()) !== null) {
@@ -233,7 +233,7 @@ class ChapterController extends Controller
             
         //     if ( $crud->update(['id','pdfs']) !== false) {
         //         $record = $crud->read();
-        //         /** Link the Regulator to the units */
+        //         /** Link the Book to the units */
         //         $updatedArchiveUnits = [];
         //         if($archiveUnits && is_array($archiveUnits)){
         //             foreach( $archiveUnits AS $archiveUnit ){
@@ -264,7 +264,7 @@ class ChapterController extends Controller
         //     'message' => __("crud.auth.failed")
         // ], 401);
     }
-    /** Updating the Regulator */
+    /** Updating the Book */
     public function read(Request $request)
     {
         if (($user = $request->user()) !== null) {
@@ -313,7 +313,7 @@ class ChapterController extends Controller
             'message' => __("crud.auth.failed")
         ], 401);
     }
-    /** Reading an Regulator */
+    /** Reading an Book */
     public function delete(Request $request)
     {
         // if (($user = $request->user()) !== null) {
