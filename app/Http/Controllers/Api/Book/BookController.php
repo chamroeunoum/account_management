@@ -502,19 +502,19 @@ class BookController extends Controller
             "search" => $search === false ? [] : [
                 'value' => $search ,
                 'fields' => [
-                    'number','objective'
+                    'title','description'
                 ]
             ],
             "order" => [
-                'field' => 'number' ,
+                'field' => 'title' ,
                 'by' => 'asc'
             ],
         ];
         $request->merge( $queryString );
-        $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'objective']);
+        $crud = new CrudController(new RecordModel(), $request, ['id', 'title', 'description']);
         $builder = $crud->getListBuilder();
         $responseData = $crud->pagination(true, $builder, [
-            'field' => 'objective' ,
+            'field' => 'title' ,
             'callback' => function($val){ return strip_tags( $val ); }
         ]);
         $responseData['message'] = __("crud.read.success");
@@ -523,7 +523,7 @@ class BookController extends Controller
     }
     public function structure(Request $request){
         if (($user = $request->user()) !== null) {
-            $Regulator = RecordModel::select(['id','title','objective','number','year','pdfs'])->where('id',$request->id)->first();
+            $Regulator = RecordModel::select(['id','title','description'])->where('id',$request->id)->first();
             if ( $Regulator !== null ) {
                 return response()->json([
                     'regulator' => $Regulator ,

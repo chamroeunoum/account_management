@@ -17,7 +17,7 @@ class CreateKuntiesTable extends Migration {
 			$table->integer('id', true);
 			$table->text('number');
 			$table->text('title');
-			$table->integer('regulator_id');
+			$table->integer('book_id');
 			$table->integer('created_by');
 			$table->integer('updated_by');
 			$table->timestamps();

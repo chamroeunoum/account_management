@@ -49,6 +49,10 @@ class Chapter extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'updated_by');
     }
+    public function book()
+    {
+        return $this->belongsTo(\App\Models\Book\Book::class, 'book_id', 'id');
+    }
     public function kunty()
     {
         return $this->belongsTo(\App\Models\Book\Kunty::class, 'kunty_id', 'id');

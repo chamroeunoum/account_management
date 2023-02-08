@@ -8,7 +8,7 @@ class FolderBook extends Model
 {
 
     protected $guarded = ['id'] ;
-    protected $fillable = ['folder_id','bid'];
+    protected $fillable = ['folder_id','book_id'];
 
     public function folder(){
         return $this->belongsTo(\App\Models\Book\Folder::class,'bid','id');

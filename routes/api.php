@@ -139,7 +139,7 @@ Route::middleware('auth:api')->namespace('\App\Http\Controllers\Api\Book')->pref
     Route::get('{id}/structure', 'BookController@structure')->where('id', '[0-9]+');
     Route::get('{id}/kunties', 'BookController@kunties')->where('id', '[0-9]+');
     Route::get('{id}/matikas', 'BookController@matikas')->where('id', '[0-9]+');
-    Route::get('{id}/matras', 'MatraController@ofRegulator')->where('id', '[0-9]+');
+    Route::get('{id}/matras', 'MatraController@ofBook')->where('id', '[0-9]+');
     Route::get('exists', 'BookController@exists');
     /** Mini display */
     Route::get('compact', "BookController@compactList");
@@ -210,10 +210,10 @@ Route::middleware('auth:api')->namespace('\App\Http\Controllers\Api\Book')->pref
     /** Mini display */
     Route::get('compact', "ChapterController@compactList");
 
-    Route::post('', 'ChapterController@store');
+    Route::post('create', 'ChapterController@store');
     Route::post('{id}/save/structure', 'ChapterController@saveStructure')->where('id', '[0-9]+');
 
-    Route::put('', 'ChapterController@update')->where('id', '[0-9]+');
+    Route::post('update', 'ChapterController@update')->where('id', '[0-9]+');
     /** Activate / Deactivate the data for using */
     Route::put('{id}/activate', 'ChapterController@active')->where('id', '[0-9]+');
     Route::put('{id}/deactivate', 'ChapterController@unactive')->where('id', '[0-9]+');
@@ -281,7 +281,7 @@ Route::middleware('auth:api')->namespace('\App\Http\Controllers\Api\Book')->pref
     /** Mini display */
     Route::get('compact', "TypeController@compactList");
 });
-Route::middleware('auth:api')->namespace('\App\Http\Controllers\Api\Book')->prefix('regulators/matras')->group(function(){
+Route::middleware('auth:api')->namespace('\App\Http\Controllers\Api\Book')->prefix('books/matras')->group(function(){
     Route::get('', 'MatraController@index');
     Route::post('', 'MatraController@store');
     Route::put('', 'MatraController@update');

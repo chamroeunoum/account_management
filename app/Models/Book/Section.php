@@ -38,9 +38,9 @@ class Section extends Model
     {
         return $this->belongsTo(\App\User::class, 'updated_by');
     }
-    public function archive()
+    public function book()
     {
-        return $this->belongsTo(\App\Models\Book\Book::class, 'bid', 'id');
+        return $this->belongsTo(\App\Models\Book\Book::class, 'book_id', 'id');
     }
     public function kunty()
     {

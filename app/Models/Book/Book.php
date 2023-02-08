@@ -37,28 +37,28 @@ class Book extends Model
     }
     public static function getKunthies($id,$columns=false){
         return  $columns!==false&&is_array($columns)&&!empty($columns)
-                ?Kunty::selectRaw( implode( ' , ' , $columns ) )->where( 'bid' , $id )
-                :Kunty::where( 'bid' , $id );
+                ?Kunty::selectRaw( implode( ' , ' , $columns ) )->where( 'book_id' , $id )
+                :Kunty::where( 'book_id' , $id );
     }
     public static function getMatikas($id,$columns=false){
         return  $columns!==false&&is_array($columns)&&!empty($columns)
-                ?Matika::selectRaw( implode( ' , ' , $columns ) )->where( 'bid' , $id )
-                :Matika::where( 'bid' , $id );
+                ?Matika::selectRaw( implode( ' , ' , $columns ) )->where( 'book_id' , $id )
+                :Matika::where( 'book_id' , $id );
     }
     public static function getChapters($id,$columns=false){
         return  $columns!==false&&is_array($columns)&&!empty($columns)
-                ?Chapter::selectRaw( implode( ' , ' , $columns ) )->where( 'bid' , $id )
-                :Chapter::where( 'bid' , $id );
+                ?Chapter::selectRaw( implode( ' , ' , $columns ) )->where( 'book_id' , $id )
+                :Chapter::where( 'book_id' , $id );
     }
     public static function getParts($id,$columns=false){
         return  $columns!==false&&is_array($columns)&&!empty($columns)
-                ?Part::selectRaw( implode( ' , ' , $columns ) )->where( 'bid' , $id )
-                :Part::where( 'bid' , $id );
+                ?Part::selectRaw( implode( ' , ' , $columns ) )->where( 'book_id' , $id )
+                :Part::where( 'book_id' , $id );
     }
     public static function getSections($id,$columns=false){
         return  $columns!==false&&is_array($columns)&&!empty($columns)
-                ?Section::selectRaw( implode( ' , ' , $columns ) )->where( 'bid' , $id )
-                :Section::where( 'bid' , $id );
+                ?Section::selectRaw( implode( ' , ' , $columns ) )->where( 'book_id' , $id )
+                :Section::where( 'book_id' , $id );
     }
     public static function getMatras($id,$columns=false,$search=false){
         /**
@@ -66,8 +66,8 @@ class Book extends Model
         */
         $builder = $columns !== false && is_array($columns) && !empty($columns)
                 ? Matra::selectRaw( implode( ' , ' , $columns ) )
-                    ->where( 'bid' , $id )
-                : Matra::where( 'bid' , $id );
+                    ->where( 'book_id' , $id )
+                : Matra::where( 'book_id' , $id );
         /**
          * បន្ថែមលក្ខណ នៃការស្វែងរក ដែលត្រូវការ
          */
@@ -100,22 +100,22 @@ class Book extends Model
         return $this->belongsTo(\App\Models\User::class,'updated_by');
     }
     public function kunties(){
-        return $this->hasMany(Kunty::class,'bid');
+        return $this->hasMany(Kunty::class,'book_id');
     }
     public function matikas(){
-        return $this->hasMany(Matika::class,'bid');
+        return $this->hasMany(Matika::class,'book_id');
     }
     public function chapters(){
-        return $this->hasMany(Chapter::class,'bid');
+        return $this->hasMany(Chapter::class,'book_id');
     }
     public function parts(){
-        return $this->hasMany(Part::class,'bid');
+        return $this->hasMany(Part::class,'book_id');
     }
     public function sections(){
-        return $this->hasMany(Section::class,'bid');
+        return $this->hasMany(Section::class,'book_id');
     }
     public function matras(){
-        return $this->hasMany(Matra::class,'bid');
+        return $this->hasMany(Matra::class,'book_id');
     }
     /*
     |--------------------------------------------------------------------------

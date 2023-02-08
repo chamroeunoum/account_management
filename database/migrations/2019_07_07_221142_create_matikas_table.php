@@ -17,7 +17,7 @@ class CreateMatikasTable extends Migration {
 			$table->integer('id', true);
 			$table->text('title');
 			$table->string('number', 191);
-			$table->integer('regulator_id');
+			$table->integer('book_id');
 			$table->integer('kunty_id');
 			$table->integer('created_by');
 			$table->integer('updated_by');

@@ -57,8 +57,8 @@ class Kunty extends Model
     public function editor(){
         return $this->belongsTo(\App\User::class,'updated_by');
     }
-    public function regulator(){
-        return $this->belongsTo(\App\Models\Book\Book::class,'bid','id');
+    public function book(){
+        return $this->belongsTo(\App\Models\Book\Book::class,'book_id','id');
     }
     public function matikas()
     {

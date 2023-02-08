@@ -17,7 +17,7 @@ class Matra extends Model
     //protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    protected $fillable = ['number','title','meaning','bid','kunty_id','matika_id','chapter_id','part_id','section_id','created_by','updated_by','active'];
+    protected $fillable = ['number','title','meaning','book_id','kunty_id','matika_id','chapter_id','part_id','section_id','created_by','updated_by','active'];
     protected $casts = [
         'number' => 'string' ,
         'title' => 'string',

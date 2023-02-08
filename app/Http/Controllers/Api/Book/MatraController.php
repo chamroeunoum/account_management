@@ -16,7 +16,7 @@ class MatraController extends Controller
         $search = isset( $request->search ) && $request->serach !== "" ? $request->search : false ;
         $perPage = isset( $request->perPage ) && $request->perPage !== "" ? $request->perPage : 10 ;
         $page = isset( $request->page ) && $request->page !== "" ? $request->page : 1 ;
-        $regulator_id = isset( $request->regulator_id ) && $request->regulator_id >0 ? $request->regulator_id : false ;
+        $book_id = isset( $request->book_id ) && $request->book_id >0 ? $request->book_id : false ;
         $kunty_id = isset( $request->kunty_id ) && $request->kunty_id >0 ? $request->kunty_id : false ;
         $matika_id = isset( $request->matika_id ) && $request->matika_id >0 ? $request->matika_id : false ;
         $chapter_id = isset( $request->chapter_id ) && $request->chapter_id >0 ? $request->chapter_id : false ;
@@ -27,8 +27,8 @@ class MatraController extends Controller
             "where" => [
                 'default' => [
                     [
-                        'field' => 'regulator_id' ,
-                        'value' => $regulator_id === false ? "" : $regulator_id
+                        'field' => 'book_id' ,
+                        'value' => $book_id === false ? "" : $book_id
                     ],
                     [
                         'field' => 'kunty_id' ,
@@ -107,7 +107,7 @@ class MatraController extends Controller
 
         $request->merge( $queryString );
 
-        $crud = new CrudController(new RecordModel(), $request, ['id', 'number','title', 'meaning' , 'regulator_id', 'kunty_id', 'matika_id', 'chapter_id' , 'part_id', 'section_id' , 'created_by' , 'updated_by' ]);
+        $crud = new CrudController(new RecordModel(), $request, ['id', 'number','title', 'meaning' , 'book_id', 'kunty_id', 'matika_id', 'chapter_id' , 'part_id', 'section_id' , 'created_by' , 'updated_by' ]);
         $crud->setRelationshipFunctions([
             /** relationship name => [ array of fields name to be selected ] */
             "regulator" => ['id','number','title','objective','year'] ,
@@ -122,8 +122,8 @@ class MatraController extends Controller
         $builder = $crud->getListBuilder();
         
         // /** Filter by regulator id */
-        // if( $request->regulator_id > 0 ){
-        //     $builder = $builder->where('regulator_id',$request->regulator_id);
+        // if( $request->book_id > 0 ){
+        //     $builder = $builder->where('book_id',$request->book_id);
         // }
 
         /** Filter the record by the user role */
@@ -160,7 +160,7 @@ class MatraController extends Controller
             $input['created_at'] = $input['updated_at'] = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
             $input['created_by'] = $input['updated_by'] = $user->id;
             $request->merge($input);
-            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'regulator_id', 'regulator', 'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
+            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'book_id', 'regulator', 'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
             if (($record = $crud->create()) !== false) {
                 $record = $crud->formatRecord($record);
                 return response()->json([
@@ -190,7 +190,7 @@ class MatraController extends Controller
             $input['updated_by'] = $user->id;
             $request->merge($input);
 
-            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'regulator_id',  'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
+            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'book_id',  'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
             if ($crud->update() !== false) {
                 $record = $crud->formatRecord($crud->read());
                 return response()->json([
@@ -213,7 +213,7 @@ class MatraController extends Controller
     public function read(Request $request)
     {
         if (($user = $request->user()) !== null) {
-            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'regulator_id', 'regulator' ,  'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
+            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'book_id', 'regulator' ,  'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
             if (($record = $crud->read()) !== false) {
                 $record = $crud->formatRecord($record);
                 return response()->json([
@@ -242,7 +242,7 @@ class MatraController extends Controller
             $input['updated_by'] = $user->id;
             $request->merge($input);
 
-            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'regulator_id', 'regulator' , 'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
+            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'book_id', 'regulator' , 'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
             if (($record = $crud->delete()) !== false) {
                 return response()->json([
                     'ok' => true ,
@@ -262,7 +262,7 @@ class MatraController extends Controller
     /** Check duplicate archive */
     public function exists(Request $request){
         if (($user = $request->user()) !== null) {
-            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'regulator_id', 'regulator' , 'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
+            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'book_id', 'regulator' , 'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
             if ( ($record = $crud->exists(['fid','year'],true)) !== false) {
                 $record = $crud->formatRecord($record);
                 return response()->json([
@@ -285,7 +285,7 @@ class MatraController extends Controller
     public function active(Request $request)
     {
         if (($user = $request->user()) !== null) {
-            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'regulator_id', 'regulator' , 'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
+            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'book_id', 'regulator' , 'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
             if ($crud->booleanField('active', 1)) {
                 $record = $crud->formatRecord($record = $crud->read());
                 return response(
@@ -312,7 +312,7 @@ class MatraController extends Controller
     public function unactive(Request $request)
     {
         if (($user = $request->user()) !== null) {
-            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'regulator_id', 'regulator' , 'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
+            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'meaning', 'book_id', 'regulator' , 'kunty_id', 'kunty', 'matika_id', 'matika', 'chapter_id', 'chapter', 'part_id', 'part', 'section_id', 'section', 'created_by', 'author', 'updated_by', 'editor']);
             if ( $crud->booleanField('active', 0) ) {
                 $record = $crud->formatRecord($record = $crud->read());
                 // User does exists
@@ -341,7 +341,7 @@ class MatraController extends Controller
     {
         /** Format from query string */
         $search = isset( $request->search ) && $request->serach !== "" ? $request->search : false ;
-        $regulator_id = isset( $request->regulator_id ) && $request->regulator_id >0 ? $request->regulator_id : false ;
+        $book_id = isset( $request->book_id ) && $request->book_id >0 ? $request->book_id : false ;
         $kunty_id = isset( $request->kunty_id ) && $request->kunty_id >0 ? $request->kunty_id : false ;
         $matika_id = isset( $request->matika_id ) && $request->matika_id >0 ? $request->matika_id : false ;
         $chapter_id = isset( $request->chapter_id ) && $request->chapter_id >0 ? $request->chapter_id : false ;
@@ -352,8 +352,8 @@ class MatraController extends Controller
             "where" => [
                 'default' => [
                     [
-                        'field' => 'regulator_id' ,
-                        'value' => $regulator_id === false ? "" : $regulator_id
+                        'field' => 'book_id' ,
+                        'value' => $book_id === false ? "" : $book_id
                     ],
                     [
                         'field' => 'kunty_id' ,
@@ -410,10 +410,10 @@ class MatraController extends Controller
     /**
      * Get matras of a regulator
      */
-    public function ofRegulator(Request $request){
-        if( $request->regulator_id > 0 ){
+    public function ofBook(Request $request){
+        if( $request->book_id > 0 ){
             /** Format from query string */
-            $regulator_id = isset( $request->regulator_id ) && $request->regulator_id >0 ? $request->regulator_id : false ;
+            $book_id = isset( $request->book_id ) && $request->book_id >0 ? $request->book_id : false ;
             $search = isset( $request->search ) && $request->serach !== "" ? $request->search : false ;
             $perPage = isset( $request->perPage ) && $request->perPage !== "" ? $request->perPage : 10 ;
             $page = isset( $request->page ) && $request->page !== "" ? $request->page : 1 ;
@@ -427,8 +427,8 @@ class MatraController extends Controller
                 "where" => [
                     'default' => [
                         [
-                            'field' => 'regulator_id' ,
-                            'value' => $regulator_id === false ? "" : $regulator_id
+                            'field' => 'book_id' ,
+                            'value' => $book_id === false ? "" : $book_id
                         ],
                         [
                             'field' => 'kunty_id' ,
@@ -470,10 +470,10 @@ class MatraController extends Controller
 
             $request->merge( $queryString );
 
-            $crud = new CrudController(new RecordModel(), $request, ['id', 'number','title', 'meaning' , 'regulator_id', 'kunty_id', 'matika_id', 'chapter_id' , 'part_id', 'section_id' , 'created_by' , 'updated_by' ]);
+            $crud = new CrudController(new RecordModel(), $request, ['id', 'number','title', 'meaning' , 'book_id', 'kunty_id', 'matika_id', 'chapter_id' , 'part_id', 'section_id' , 'created_by' , 'updated_by' , 'active' ]);
             $crud->setRelationshipFunctions([
                 /** relationship name => [ array of fields name to be selected ] */
-                "regulator" => ['id','number','title','objective','year'] ,
+                "book" => ['id','number','title','objective','year'] ,
                 "kunty" => ['id', 'number', 'title'],
                 "matika" => ['id', 'number', 'title'],
                 "chapter" => ['id', 'number', 'title'],

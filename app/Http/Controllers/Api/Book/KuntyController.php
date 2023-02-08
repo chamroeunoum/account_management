@@ -18,7 +18,7 @@ class KuntyController extends Controller
 {
     private $selectedFields ;
     public function __construct(){
-        $this->selectedFields = ['id', 'number', 'title','regulator_id','updated_at','created_by','updated_by'] ;
+        $this->selectedFields = ['id', 'number', 'title','book_id','updated_at','created_by','updated_by'] ;
     }
     /** Get a list of Archives */
     public function index(Request $request){
@@ -27,7 +27,7 @@ class KuntyController extends Controller
         $search = isset( $request->search ) && $request->serach !== "" ? $request->search : false ;
         $perPage = isset( $request->perPage ) && $request->perPage !== "" ? $request->perPage : 50 ;
         $page = isset( $request->page ) && $request->page !== "" ? $request->page : 1 ;
-        $regulator_id = isset( $request->regulator_id ) && $request->regulator_id > 0 ? $request->regulator_id : false ;
+        $book_id = isset( $request->book_id ) && $request->book_id > 0 ? $request->book_id : false ;
         // $number = isset( $request->number ) && $request->number !== "" ? $request->number : false ;
         // $type = isset( $request->type ) && $request->type !== "" ? $request->type : false ;
         // $unit = isset( $request->unit ) && $request->unit !== "" ? $request->unit : false ;
@@ -38,8 +38,8 @@ class KuntyController extends Controller
             "where" => [
                 'default' => [
                     [
-                        'field' => 'regulator_id' ,
-                        'value' => $regulator_id === false ? "" : $regulator_id
+                        'field' => 'book_id' ,
+                        'value' => $book_id === false ? "" : $book_id
                     ]
                 ],
                 // 'in' => [] ,
@@ -126,53 +126,30 @@ class KuntyController extends Controller
     }
     /** Create a new Regulator */
     public function store(Request $request){
-        // if( ($user = $request->user() ) !== null ){
-        //     $archiveUnits = $request->get('unit_ids',false);
-        //     if($archiveUnits){
-        //         $archiveUnits = explode(',',$archiveUnits);
-        //     }
-        //     unset($request['unit_ids']);
-        //     /** Merge variable created_by and updated_by into request */
-
-        //     $request['created_at'] = $request['updated_at'] = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
-        //     $request['created_by'] = $request['updated_by'] = $user->id;
-        //     $crud = new CrudController(new RecordModel(), $request, $this->selectedFields);
-        //     // $crud->setRelationshipFunctions([
-        //     //     'units' => false
-        //     // ]);
-        //     if (($record = $crud->create()) !== false) {
-        //         /** Link the Regulator to the units */
-        //         $updatedArchiveUnits = [];
-        //         if($archiveUnits && is_array($archiveUnits)){
-        //             foreach( $archiveUnits AS $archiveUnit ){
-        //                 $updatedArchiveUnits[ $archiveUnit ] =
-        //                     [
-        //                         'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s') ,
-        //                         'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s') ,
-        //                         'created_by' => $user->id ,
-        //                         'updated_by' => $user->id
-        //                     ];
-        //             }
-        //             $record->units()->sync( $updatedArchiveUnits );
-        //         }
-
-        //         $record = $crud->formatRecord($record);
-        //         return response()->json([
-        //             'ok' => true ,
-        //             'record' => $record,
-        //             'message' => __("crud.save.success")
-        //         ]);
-        //     }
-        //     return response()->json([
-        //         'ok' => false ,
-        //         'message' => __("crud.save.failed")
-        //     ]);
-        // }
-        // return response()->json([
-        //     'record' => null,
-        //     'message' => __("crud.auth.failed")
-        // ], 401);
-
+        if( ($user = $request->user() ) !== null ){
+            /** Merge variable created_by and updated_by into request */
+            $input = $request->input();
+            $input['created_at'] = $input['updated_at'] = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
+            $input['created_by'] = $input['updated_by'] = $user->id;
+            $request->merge($input);
+            $crud = new CrudController(new RecordModel(), $request, ['id', 'number', 'title', 'book_id', 'created_by', 'updated_by']);
+            if (($record = $crud->create()) !== false) {
+                $record = $crud->formatRecord($record);
+                return response()->json([
+                    'record' => $record,
+                    'ok' => true ,
+                    'message' => __("crud.save.success")
+                ]);
+            }
+            return response()->json([
+                'ok' => false ,
+                'message' => __("crud.save.failed")
+            ]);
+        }
+        return response()->json([
+            'ok' => false ,
+            'message' => __("crud.auth.failed")
+        ], 401);
     }
     /** Updating the Regulator */
     public function update(Request $request)
@@ -441,14 +418,14 @@ class KuntyController extends Controller
         $search = isset( $request->search ) && $request->serach !== "" ? $request->search : false ;
         $perPage = isset( $request->perPage ) && $request->perPage !== "" ? $request->perPage : 50 ;
         $page = isset( $request->page ) && $request->page !== "" ? $request->page : 1 ;
-        $regulator_id = isset( $request->regulator_id ) && $request->regulator_id > 0 ? $request->regulator_id : false ;
+        $book_id = isset( $request->book_id ) && $request->book_id > 0 ? $request->book_id : false ;
         
         $queryString = [
             "where" => [
                 'default' => [
                     [
-                        'field' => 'regulator_id' ,
-                        'value' => $regulator_id === false ? "" : $regulator_id
+                        'field' => 'book_id' ,
+                        'value' => $book_id === false ? "" : $book_id
                     ]
                 ],
                 // 'in' => [] ,

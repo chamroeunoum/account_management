@@ -18,7 +18,7 @@ class ChapterController extends Controller
 {
     private $selectedFields ;
     public function __construct(){
-        $this->selectedFields = ['id', 'number', 'title','regulator_id','kunty_id', 'matika_id','updated_at','created_by','updated_by'] ;
+        $this->selectedFields = ['id', 'number', 'title','book_id','kunty_id', 'matika_id','updated_at','created_by','updated_by'] ;
     }
     /** Get a list of Archives */
     public function index(Request $request){
@@ -27,7 +27,7 @@ class ChapterController extends Controller
         $search = isset( $request->search ) && $request->serach !== "" ? $request->search : false ;
         $perPage = isset( $request->perPage ) && $request->perPage !== "" ? $request->perPage : 50 ;
         $page = isset( $request->page ) && $request->page !== "" ? $request->page : 1 ;
-        $regulator_id = isset( $request->regulator_id ) && $request->regulator_id > 0 ? $request->regulator_id : false ;
+        $book_id = isset( $request->book_id ) && $request->book_id > 0 ? $request->book_id : false ;
         $matika_id = isset( $request->matika_id ) && $request->matika_id > 0 ? $request->matika_id : false ;
         $chapter_id = isset( $request->chapter_id ) && $request->chapter_id > 0 ? $request->chapter_id : false ;
         // $number = isset( $request->number ) && $request->number !== "" ? $request->number : false ;
@@ -40,8 +40,8 @@ class ChapterController extends Controller
             "where" => [
                 'default' => [
                     [
-                        'field' => 'regulator_id' ,
-                        'value' => $regulator_id === false ? "" : $regulator_id
+                        'field' => 'book_id' ,
+                        'value' => $book_id === false ? "" : $book_id
                     ],
                     [
                         'field' => 'matika_id' ,
@@ -426,15 +426,15 @@ class ChapterController extends Controller
         $search = isset( $request->search ) && $request->serach !== "" ? $request->search : false ;
         $perPage = isset( $request->perPage ) && $request->perPage !== "" ? $request->perPage : 50 ;
         $page = isset( $request->page ) && $request->page !== "" ? $request->page : 1 ;
-        $regulator_id = isset( $request->regulator_id ) && $request->regulator_id > 0 ? $request->regulator_id : false ;
+        $book_id = isset( $request->book_id ) && $request->book_id > 0 ? $request->book_id : false ;
         $matika_id = isset( $request->matika_id ) && $request->matika_id > 0 ? $request->matika_id : false ;
         $chapter_id = isset( $request->chapter_id ) && $request->chapter_id > 0 ? $request->chapter_id : false ;
         $queryString = [
             "where" => [
                 'default' => [
                     [
-                        'field' => 'regulator_id' ,
-                        'value' => $regulator_id === false ? "" : $regulator_id
+                        'field' => 'book_id' ,
+                        'value' => $book_id === false ? "" : $book_id
                     ],
                     [
                         'field' => 'matika_id' ,
